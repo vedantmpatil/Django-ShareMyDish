@@ -1,0 +1,206 @@
+{% extends "dish/base.html" %}
+
+{% block title %}About Us | ShareMyDish{% endblock %}
+
+{% block content %}
+<style>
+  /* Exotic gradient and pattern background for hero */
+  .about-hero {
+    background: linear-gradient(135deg, #c02425cc 0%, #f8b500cc 100%), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80');
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 8rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  }
+
+  .about-hero h1 {
+    font-weight: 900;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  }
+
+  .about-hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  }
+
+  /* Mission section styling */
+  .mission-section {
+    margin-top: 5rem;
+    padding: 3rem 2rem;
+    background: #fff7e6;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(192, 36, 37, 0.4);
+    font-family: 'Montserrat', sans-serif;
+    color: #4a2c2c;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .mission-section h2 {
+    color: #c02425;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: 1.5px;
+  }
+
+  .mission-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  /* Flavor sections */
+  .flavor-section {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .flavor-card {
+    flex: 1 1 280px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 6px 18px rgba(192, 36, 37, 0.25);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .flavor-card:hover {
+    transform: scale(1.05);
+  }
+
+  .flavor-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .flavor-content {
+    padding: 1.5rem;
+    color: #4a2c2c;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .flavor-content h3 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #c02425;
+  }
+
+  .flavor-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* CTA button */
+  .btn-explore {
+    background: #c02425;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 3rem;
+    border-radius: 30px;
+    letter-spacing: 1.2px;
+    transition: background 0.3s ease;
+    margin-top: 3rem;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(192, 36, 37, 0.6);
+  }
+
+  .btn-explore:hover {
+    background: #f8b500;
+    color: #c02425;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(248, 181, 0, 0.8);
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .about-hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .about-hero p {
+      font-size: 1.1rem;
+    }
+
+    .flavor-section {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+<div class="container py-5">
+  <!-- Hero Section -->
+  <section class="about-hero mb-5">
+    <h1>Welcome to ShareMyDish</h1>
+    <p>
+      Your culinary passport to a world of flavors! At ShareMyDish, every dish tells a story — a story of tradition, passion, and creativity. 
+      We bring food lovers together to discover and share authentic, exotic recipes that inspire your inner chef.
+    </p>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission-section">
+    <h2>Our Mission</h2>
+    <p>
+      To create a vibrant global community where cooking transcends borders. Whether you crave spicy street food from Asia, hearty comfort food from Europe, 
+      or fresh farm-to-table dishes from your own backyard, ShareMyDish connects you to culinary treasures worldwide.
+    </p>
+    <p>
+      Add your favorite recipes, explore diverse cuisines, and celebrate the art of cooking alongside passionate food enthusiasts.
+    </p>
+    <a href="{% url 'dish:explore' %}" class="btn btn-explore">Explore Recipes</a>
+  </section>
+
+  <!-- Flavor Exploration -->
+  <section class="flavor-section">
+    <div class="flavor-card">
+      <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=600&q=80" alt="Spicy Street Food" class="flavor-image">
+      <div class="flavor-content">
+        <h3>Spicy Street Food</h3>
+        <p>
+          Dive into the vibrant and bold world of street food from around the globe. Experience the heat, the aroma, and the rich flavors that define every bite.
+        </p>
+      </div>
+    </div>
+
+    <div class="flavor-card">
+      <img src="https://www.clubmahindra.com/blog/media/section_images/clubmblogd-097c650fa0f7193.jpg" alt="Hearty Comfort Food" class="flavor-image">
+      <div class="flavor-content">
+        <h3>Hearty Comfort Food</h3>
+        <p>
+          Discover the soul-soothing dishes that warm your heart and satisfy your cravings. Perfect for cozy nights and moments of pure comfort.
+        </p>
+      </div>
+    </div>
+
+    <div class="flavor-card">
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80" alt="Exotic Global Cuisines" class="flavor-image">
+      <div class="flavor-content">
+        <h3>Exotic Global Cuisines</h3>
+        <p>
+          Journey across continents with our curated exotic dishes. Expand your palate with rare spices, unique ingredients, and culinary traditions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

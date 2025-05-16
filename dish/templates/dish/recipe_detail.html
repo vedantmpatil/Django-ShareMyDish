@@ -1,0 +1,90 @@
+{% extends "dish/base.html" %}
+
+{% block title %}{{ item.item_name }} | ShareMyDish{% endblock %}
+
+{% block content %}
+<style>
+    .recipe-hero {
+        background-image: url('{{ item.item_image_url }}');
+        background-size: cover;
+        background-position: center;
+        height: 350px;
+        position: relative;
+        border-radius: 15px;
+    }
+
+    .recipe-overlay {
+        background-color: rgba(0, 0, 0, 0.55);
+        color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        border-radius: 15px;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+    }
+
+    .recipe-details {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .badge-custom {
+        margin-right: 5px;
+    }
+
+    .video-frame {
+        width: 100%;
+        height: 315px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .video-frame {
+            height: 200px;
+        }
+
+        .recipe-hero {
+            height: 250px;
+        }
+    }
+</style>
+
+<div class="container py-4">
+    <div class="recipe-hero mb-4">
+        <div class="recipe-overlay">
+            <h1 class="section-title">{{ item.item_name }}</h1>
+            <p>
+                <span class="badge bg-secondary badge-custom">{{ item.item_cuisine }}</span>
+                <span class="badge bg-info text-dark badge-custom">{{ item.item_type }}</span>
+                <span class="badge bg-warning text-dark badge-custom">{{ item.item_difficulty }}</span>
+            </p>
+            <p><strong>Cooking Time:</strong> {{ item.item_cooking_time }} mins | <strong>By:</strong> {{ item.item_author }}</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <p><strong>Ingredients:</strong> {{ item.item_ingredients }}</p>
+
+            <h4 class="mt-4 section-title">Instructions</h4>
+            <p class="recipe-details">{{ item.item_recipe }}</p>
+        </div>
+        <div class="col-md-6">
+            <h4 class="section-title">Watch the Recipe</h4>
+            <iframe class="video-frame" src="{{ item.item_video_url }}" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-center gap-3">
+        <a href="{% url 'dish:update_recipe' item.id %}" class="btn btn-outline-primary px-4">✏️ Update</a>
+        <a href="{% url 'dish:delete_recipe' item.id %}" class="btn btn-outline-danger px-4">🗑️ Delete</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "dish/base.html" %}
+
+{% block title %}Explore | ShareMyDish{% endblock %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Lato', sans-serif;
+    }
+
+    .hero {
+        background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        position: relative;
+        text-align: center;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1;
+    }
+
+    .hero-content {
+        z-index: 2;
+        max-width: 800px;
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+    }
+
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .image-grid img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .caption {
+        text-align: center;
+        margin-top: 0.5rem;
+        color: #666;
+        font-style: italic;
+    }
+
+    .cta-section {
+        background: #f8f9fa;
+        text-align: center;
+        padding: 4rem 1rem;
+    }
+
+    .cta-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .image-grid img {
+            height: 200px;
+        }
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Discover the World One Dish at a Time</h1>
+        <p class="lead mt-3">Explore recipes, cultures, and flavors — from the kitchens of every continent.</p>
+    </div>
+</section>
+
+<!-- Story Section -->
+<section class="section text-center container">
+    <h2 class="fw-bold mb-4">Every Recipe Has a Story</h2>
+    <p class="lead mb-4">At <strong>ShareMyDish</strong>, we celebrate the journey behind every plate. It's not just about ingredients — it's about memories, traditions, and flavors that connect us across continents. Whether it's a street snack from Bangkok or a family recipe from Tuscany, your dish deserves to be shared.</p>
+</section>
+
+<!-- Beautiful World Food Gallery -->
+<section class="section container">
+    <div class="row g-4 image-grid">
+        <div class="col-md-4">
+            <img src="https://shop.woodlandfoods.com/img/WF_Images/q60-moroccan-spiced-couscous-with-chickpeas-and-roasted-vegetables-1.jpg" alt="Moroccan Couscous">
+            <div class="caption">Spiced Couscous in Marrakesh 🇲🇦</div>
+        </div>
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80" alt="Paris Pastry">
+            <div class="caption">Flaky Pastries in Paris 🇫🇷</div>
+        </div>
+        <div class="col-md-4">
+            <img src="https://d4t7t8y8xqo0t.cloudfront.net/app/resized/1080X/eazytrendz/2473/trend20190629104000.jpg" alt="Indian Thali">
+            <div class="caption">Royal Thali in Jaipur 🇮🇳</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Footer -->
+<section class="cta-section">
+    <h2 class="mb-3">Have a Secret Recipe?</h2>
+    <p class="lead mb-4">Share your culinary heritage with food lovers across the world.</p>
+    <a href="{% url 'dish:add_recipe' %}" class="btn btn-danger btn-lg px-4">Share a Recipe</a>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "dish/base.html" %}
+
+{% block title %}Delete Recipe | ShareMyDish{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg border-danger rounded-4">
+        <div class="card-body text-center p-5">
+          <h2 class="text-danger mb-3">Delete Recipe</h2>
+          <p class="lead">Are you sure you want to permanently delete the recipe:</p>
+          <h4 class="fw-bold text-dark mb-4">“{{ item.item_name }}”</h4>
+
+          <form method="post" class="d-flex justify-content-center gap-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+            <a href="{% url 'dish:recipe_detail' item.pk %}" class="btn btn-outline-secondary px-4">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
