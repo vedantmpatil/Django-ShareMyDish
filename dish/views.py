@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Item
 from .forms import ItemForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def explore(request):
@@ -15,6 +16,7 @@ def recipe_detail(request, pk):
     item = get_object_or_404(Item, pk=pk)
     return render(request, 'dish/recipe_detail.html', {'item': item})
 
+@login_required
 def add_recipe(request):
     if request.method == 'POST':
         form = ItemForm(request.POST)
@@ -25,6 +27,7 @@ def add_recipe(request):
         form = ItemForm()
     return render(request, 'dish/add_recipe.html', {'form': form})
 
+@login_required
 def update_recipe(request, pk):
     item = get_object_or_404(Item, pk=pk)
     form = ItemForm(request.POST or None, instance=item)
@@ -33,7 +36,7 @@ def update_recipe(request, pk):
         return redirect('dish:recipe_detail', pk=item.pk)
     return render(request, 'dish/update_recipe.html', {'form': form, 'item': item})
 
-
+@login_required
 def delete_recipe(request, pk):
     item = get_object_or_404(Item, pk=pk)
     if request.method == 'POST':

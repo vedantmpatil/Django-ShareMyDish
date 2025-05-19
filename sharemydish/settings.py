@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']  # Or use your render domain once deployed
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'dish.apps.DishConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,3 +125,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'login'          # Where to redirect if login is required
+LOGIN_REDIRECT_URL = '/'  # After successful login
+LOGOUT_REDIRECT_URL = 'login' # Where to go after logout
+
