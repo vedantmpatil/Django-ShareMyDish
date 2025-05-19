@@ -65,7 +65,8 @@
                 <span class="badge bg-info text-dark badge-custom">{{ item.item_type }}</span>
                 <span class="badge bg-warning text-dark badge-custom">{{ item.item_difficulty }}</span>
             </p>
-            <p><strong>Cooking Time:</strong> {{ item.item_cooking_time }} mins | <strong>By:</strong> {{ item.item_author }}</p>
+            <p><strong>Cooking Time:</strong> {{ item.item_cooking_time }} mins | <strong>By:</strong> {{ item.item_author }} | <strong>Shared by:</strong>{{ item.created_by.username |default:"Anonymous"  }}</p>
+
         </div>
     </div>
 
@@ -81,6 +82,7 @@
             <iframe class="video-frame" src="{{ item.item_video_url }}" allowfullscreen></iframe>
         </div>
     </div>
+    
 
     <div class="mt-5 d-flex justify-content-center gap-3">
         <a href="{% url 'dish:update_recipe' item.id %}" class="btn btn-outline-primary px-4">✏️ Update</a>

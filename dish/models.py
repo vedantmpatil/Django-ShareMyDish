@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -18,3 +19,6 @@ class Item(models.Model):
     item_video_url = models.CharField(max_length=500)
     item_difficulty = models.CharField(max_length=50)
     item_type = models.CharField(max_length=50)
+
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipes', default=None)
+
